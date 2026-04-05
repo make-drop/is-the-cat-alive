@@ -46,11 +46,14 @@ class SimulatedQubit:
 
     def regenerate_uncertainty(self):
         """
-        Resets the qubit to its base state |0>.
+        Restores the qubit to a state of superposition (uncertainty).
+        Equivalent to applying the Hadamard gate again after measurement:
+        the outcome becomes unknown, as if the qubit was never observed.
         """
-        self.in_superposition = False
-        self.measured_state = 0
-        print(f"[Regenerate Uncertainty] {self.name} regenerated to base state |0>.")
+        self.in_superposition = True
+        self.measured_state = None
+        print(f"[{self.name}] uncertainty regenerated → back to superposition (|0> + |1>)")
+        print(f"   The cat is once again both Alive and Dead.")
 
 def main():
     print("=== QUANTUM CONCEPTS SIMULATOR ===")
